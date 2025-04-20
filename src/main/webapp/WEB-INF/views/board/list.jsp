@@ -41,8 +41,8 @@
             </tr>
         </c:if>
     </table>
-    <div class="write-button">
-        <a href="/board/write">글쓰기</a>
+    <div class="btn-pos">
+        <a href="/board/write" class="btn btn-primary">글쓰기</a>
     </div>
 </main>
 

@@ -22,7 +22,7 @@
             <label for="title">제목</label>
             <input type="text" id="title" name="title" required/>
         </div>
-        
+
         <div class="form-group">
             <label for="title">작성자 ID</label>
             <input type="text" id="user_id" name="user_id" required/>
@@ -33,9 +33,9 @@
             <textarea id="content" name="content" rows="8" required></textarea>
         </div>
 
-        <div class="form-actions">
-            <button type="submit" class="submit-btn">저장</button>
-            <a href="/board/list" class="cancel-btn">목록으로</a>
+        <div class="btn-pos">
+            <button type="submit" class="btn btn-primary">저장</button>
+            <a href="/board/list" class="btn btn-cancel">목록으로</a>
         </div>
     </form>
 </main>

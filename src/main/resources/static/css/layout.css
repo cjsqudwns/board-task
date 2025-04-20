@@ -18,12 +18,11 @@ header {
     top: 0;
 }
 
-/* 전체 너비를 차지하고 내부를 가운데 정렬 */
 .top-bar {
-    margin: 0 auto; /* 가운데 정렬 */
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* 수직 정렬 */
+    align-items: center;
     padding: 15px 20px;
     font-size: 14px;
     color: #333;
@@ -59,25 +58,72 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     text-align: center;
+    border-left: none;
+    border-right: none;
 }
 
-th, td {
-    border-bottom: 1px solid #eee;
+th {
+    border-top: 2px solid #000; /* 상단만 두꺼운 검정선 */
+    border-bottom: 1px solid #eee; /* 하단은 연한 회색 */
+    border-left: none;
+    border-right: none;
     padding: 12px;
     font-size: 15px;
 }
 
-.write-button {
+td {
+    border-bottom: 1px solid #eee; /* 하단만 유지 */
+    border-left: none;
+    border-right: none;
+    padding: 12px;
+    font-size: 15px;
+}
+
+th:first-child, td:first-child {
+    border-left: none;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+/* 버튼 */
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+/* 버튼들 위치 */
+.btn-pos {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
     margin-left: auto;
     margin-top: 30px;
 }
 
-.write-button a {
+/* 글쓰기/저장 등 강조 버튼 */
+.btn-primary {
     background-color: #ffc107;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 6px;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+}
+
+/* 취소 버튼용 - 대비되는 차분한 톤 */
+.btn-cancel {
+    background-color: #6c757d;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
 }
 
 /*게시물 상세 페이지 (view)*/
@@ -156,31 +202,6 @@ th, td {
     border: 1px solid #ddd;
     border-radius: 4px;
     resize: vertical;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.submit-btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.cancel-btn {
-    background-color: #6c757d;
-    color: #fff;
-    padding: 10px 16px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
 }
 
 footer {

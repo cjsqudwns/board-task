@@ -25,8 +25,8 @@
         <p>${board.content}</p>
     </div>
 
-    <div class="view-footer">
-        <a href="/board/list">← 목록으로</a>
+    <div class="btn-pos">
+        <a href="/board/list" class="btn btn-cancel">목록으로</a>
     </div>
 </main>
 

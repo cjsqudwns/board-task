@@ -29,9 +29,14 @@ public class BoardController {
     }
 
     // 글 상세보기
-    @GetMapping("/board/view?id=")
+    @GetMapping("/view")
     public String view(@RequestParam Long id, Model model) {
-        model.addAttribute("board");
+        // 예시) boardService.findById(id)로 가져와야 함 (여긴 임시 null)
+        Board board = new Board(); // 임시 객체
+        board.setBid(id);
+        board.setTitle("샘플 제목");
+        board.setContent("샘플 내용입니다.");
+        model.addAttribute("board", board);
         return "/board/view";
     }
 }

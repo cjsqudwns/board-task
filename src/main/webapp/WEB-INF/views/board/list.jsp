@@ -27,8 +27,8 @@
         <c:if test="${not empty requestScope.boards}">
             <c:forEach var="b" items="${boards}">
                 <tr>
-                    <td>${b.id}</td>
-                    <td><a href="/board/view?id=${b.id}">${b.title}</a></td>
+                    <td>${b.bid}</td>
+                    <td><a href="/board/view?id=${b.bid}">${b.title}</a></td>
                     <td>${b.user.name}</td>
                 </tr>
             </c:forEach>

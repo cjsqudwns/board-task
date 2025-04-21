@@ -126,9 +126,42 @@ th:last-child, td:last-child {
     background-color: #5a6268;
 }
 
+/* 목록 버튼 */
+.btn-list {
+    background-color: #007bff; /* 파란색 */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-list:hover {
+    background-color: #0056b3;
+}
+
+/* 수정 버튼 */
+.btn-edit {
+    background-color: #28a745; /* 녹색 */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+/* 삭제 버튼 */
+.btn-delete {
+    background-color: #dc3545; /* 빨간색 */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
 /*게시물 상세 페이지 (view)*/
 .view-container {
-    max-width: 800px;
+    width: 80%;
     margin: 60px auto;
     padding: 0 20px;
 }
@@ -138,6 +171,7 @@ th:last-child, td:last-child {
     font-weight: 700;
     margin-bottom: 10px;
     text-align: left;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .writer-info {
@@ -154,6 +188,33 @@ th:last-child, td:last-child {
     color: #333;
     white-space: pre-line; /* 줄바꿈 유지 */
     margin-bottom: 40px;
+}
+
+.view-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.view-table th {
+    background-color: #fffbe6;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.view-table td {
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+
+.content-cell {
+    height: 200px;
+    vertical-align: top;
+    padding-top: 20px;
 }
 
 .view-footer {

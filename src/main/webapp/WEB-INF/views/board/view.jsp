@@ -16,17 +16,45 @@
 <%@ include file="../layout/header.jsp" %>
 
 <main class="view-container">
-    <div class="view-header">
-        <h1>${board.title}</h1>
-        <p class="writer-info">작성자: <strong>${board.user.name}</strong></p>
-    </div>
+    <h2>상세보기</h2>
 
-    <div class="view-content">
-        <p>${board.content}</p>
-    </div>
+    <table class="view-table">
+        <tr>
+            <th>번호</th>
+            <td>${board.bid}</td>
+            <th>작성일</th>
+            <td>2024-04-21</td>
+            <%--            <td>${board.createdAt}</td>--%>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td>${board.user.name}</td>
+            <th>조회수</th>
+            <td>10</td>
+            <%--            <td>${board.views}</td>--%>
+        </tr>
+        <tr>
+            <th>제목</th>
+            <td colspan="3">${board.title}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="content-cell">
+                ${board.content}
+            </td>
+        </tr>
+    </table>
 
     <div class="btn-pos">
-        <a href="/board/list" class="btn btn-cancel">목록으로</a>
+        <c:if test="${true}">
+            <%--            <c:if test="${board.user.id == sessionScope.loginUser.id}">--%>
+            <a href="/board/edit?bid=${board.bid}" class="btn btn-edit">수정</a>
+            <form action="/board/delete" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="hidden" name="bid" value="${board.bid}"/>
+                <button type="submit" class="btn btn-delete">삭제</button>
+            </form>
+        </c:if>
+        <a href="/board/list" class="btn btn-list">목록</a>
     </div>
 </main>
 

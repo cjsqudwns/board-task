@@ -6,6 +6,7 @@ import com.bootcamp.board.repository.BoardRepository;
 import com.bootcamp.board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,17 +22,28 @@ public class BoardService {
     }
 
     // 특정 글 상세 조회
-    public Board getBoard(Long id) {
-        return boardRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 글이 존재하지 않습니다. id=" + id));
+    public Board getBoard(Long bid) {
+        return boardRepository.findById(bid)
+                .orElseThrow(() -> new IllegalArgumentException("해당 글이 존재하지 않습니다. id=" + bid));
     }
 
     // 글 저장
-    public boolean saveBoard(Board board, Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 존재하지 않습니다. id=" + userId));
+    @Transactional
+    public void saveBoard(Board board, Long uid) {
+        User user = userRepository.findById(uid)
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 존재하지 않습니다. id=" + uid));
         board.setUser(user);
         Board saved = boardRepository.save(board);
-        return saved.getBid() != null;
+    }
+
+    // 글 삭제
+    @Transactional
+    public void deleteBoard(Long bid, Long uid) {
+        Board board = boardRepository.findById(bid)
+                .orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
+        if (!board.getUser().getUid().equals(uid)) {
+            throw new IllegalArgumentException("삭제 권한이 없습니다.");
+        }
+        boardRepository.delete(board);
     }
 }

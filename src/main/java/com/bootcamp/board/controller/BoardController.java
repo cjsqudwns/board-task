@@ -22,21 +22,21 @@ public class BoardController {
         List<Board> boardList = boardService.getBoardList();
         System.out.println(boardList);
         model.addAttribute("boards", boardList);
-        return "/board/list";
+        return "board/list";
     }
 
     // 글 작성 페이지
     @GetMapping("/write")
     public String writePage() {
-        return "/board/write";
+        return "board/write";
     }
 
     // 글 저장 기능 (POST)
     @PostMapping("/write")
     public String save(@ModelAttribute Board board, HttpSession session) {
 //        Long userId = (Long) session.getAttribute("userId");
-        Long userId = 1L;
-        boardService.saveBoard(board, userId);
+        Long uid = 1L;
+        boardService.saveBoard(board, uid);
         return "redirect:/board/list";
     }
 
@@ -44,6 +44,16 @@ public class BoardController {
     @GetMapping("/view")
     public String view(@RequestParam Long id, Model model) {
         model.addAttribute("board", boardService.getBoard(id));
-        return "/board/view";
+        return "board/view";
     }
+
+    // 글 삭제 기능 (DELETE)
+    @PostMapping("/delete")
+    public String delete(@RequestParam Long bid, HttpSession httpSession) {
+//        Long userId = (Long) session.getAttribute("userId");
+        Long uid = 1L;
+        boardService.deleteBoard(bid, uid);
+        return "redirect:/board/list";
+    }
+
 }

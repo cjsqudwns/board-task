@@ -24,11 +24,6 @@
         </div>
 
         <div class="form-group">
-            <label for="title">작성자 ID</label>
-            <input type="text" id="user_id" name="user_id" required/>
-        </div>
-
-        <div class="form-group">
             <label for="content">내용</label>
             <textarea id="content" name="content" rows="8" required></textarea>
         </div>

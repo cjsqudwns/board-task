@@ -36,6 +36,20 @@ public class BoardService {
         Board saved = boardRepository.save(board);
     }
 
+    // 글 수정
+    public void updateBoard(Board board, Long userId) {
+        User currentUser = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 존재하지 않습니다. id=" + userId));
+        Board existingBoard = boardRepository.findById(board.getBid())
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 존재하지 않습니다. id=" + board.getBid()));
+        // 수정할 내용들
+        existingBoard.setTitle(board.getTitle());
+        existingBoard.setContent(board.getContent());
+        existingBoard.setUser(currentUser);
+        // JPA가 변경된 필드만 감지하여 저장함 (변경되지 않은 필드는 DB에 저장하지 않음)
+        boardRepository.save(existingBoard);
+    }
+
     // 글 삭제
     @Transactional
     public void deleteBoard(Long bid, Long uid) {

@@ -40,6 +40,24 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
+    // 글 수정 페이지
+    @GetMapping("/edit")
+    public String editPage(@RequestParam Long bid, Model model) {
+        Board board = boardService.getBoard(bid);
+        model.addAttribute("board", board);
+        return "board/write";
+    }
+
+    // 글 수정 기능 (POST)
+    @PostMapping("/edit")
+    public String update(@ModelAttribute Board board, HttpSession session) {
+//        Long userId = (Long) session.getAttribute("userId");
+        System.out.println(board);
+        Long uid = 1L;
+        boardService.updateBoard(board, uid);
+        return "redirect:/board/list";
+    }
+
     // 글 상세보기
     @GetMapping("/view")
     public String view(@RequestParam Long id, Model model) {

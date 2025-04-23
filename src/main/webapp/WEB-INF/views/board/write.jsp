@@ -36,7 +36,7 @@
 
         <div class="btn-pos">
             <button type="submit" class="btn btn-primary">${board != null ? '수정' : '저장'}</button>
-            <a href="/board/list" class="btn btn-cancel">목록으로</a>
+            <a href="/board/list" class="btn btn-cancel">목록</a>
         </div>
     </form>
 </main>

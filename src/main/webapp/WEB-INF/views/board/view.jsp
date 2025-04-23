@@ -54,7 +54,7 @@
                 <button type="submit" class="btn btn-delete">삭제</button>
             </form>
         </c:if>
-        <a href="/board/list" class="btn btn-list">목록</a>
+        <a href="/board/list" class="btn btn-cancel">목록</a>
     </div>
 </main>
 

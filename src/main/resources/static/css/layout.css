@@ -126,14 +126,14 @@ th:last-child, td:last-child {
     background-color: #5a6268;
 }
 
-/* 목록 버튼 */
-.btn-list {
+/* 완료 버튼 */
+.btn-complete {
     background-color: #007bff; /* 파란색 */
     color: #ffffff;
     border: none;
 }
 
-.btn-list:hover {
+.btn-complete:hover {
     background-color: #0056b3;
 }
 

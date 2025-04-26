@@ -34,12 +34,10 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // Validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    // JSP
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
-    runtimeOnly 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
-    providedRuntime 'jakarta.servlet:jakarta.servlet-api:6.0.0'
-
+    // Thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // Spring Boot DevTools (Runtime only)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {

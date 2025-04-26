@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Posts Page</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+</head>
+
+<body>
+<header id="header">
+    <div th:replace="~{layout/header}"></div>
+    <hr>
+</header>
+
+<main class="container">
+
+    <div class="row">
+        <div class="card card-margin search-form">
+            <div class="card-body p-0">
+                <form id="search-form">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row no-gutters">
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    <label for="search-type" hidden>Search</label>
+                                    <select class="form-control" id="search-type" name="searchType">
+                                        <option>Title</option>
+                                        <option>Content</option>
+                                        <option>ID</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                                    <label for="search-value" hidden>Search</label>
+                                    <input class="form-control" id="search-value" name="searchValue"
+                                           placeholder="Search Keyword" type="text">
+                                </div>
+                                <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                    <button class="btn btn-base" type="submit">
+                                        <svg class="feather feather-search" fill="none" height="24"
+                                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                             stroke-width="2"
+                                             viewBox="0 0 24 24" width="24"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table" id="post-table">
+            <thead>
+            <tr>
+                <th class="title col-6"><a>Title</a></th>
+                <th class="category col-2"><a>Category</a></th>
+                <th class="uid"><a>Creator</a></th>
+                <th class="created-date"><a>Created Date</a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}">
+                <td class="title"><a th:href="@{/posts/{pid}(pid=${post.pid})}" th:text="${post.title}">Title</a></td>
+                <td class="category"><span class="badge text-bg-secondary mx-1"><a class="text-reset"
+                                                                                   th:text="${post.categoryType}">Category</a></span>
+                </td>
+                <td class="uid" th:text="${post.createdBy}">Admin</td>
+                <td class="created-date" th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}">
+                    <time>2024-11-20</time>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-primary me-md-2" id="write-post" role="button" th:href="@{/posts/form}">Write</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <nav aria-label="Page navigation" id="pagination">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</main>
+
+<footer id="footer">
+    <hr>
+    <div th:replace="~{layout/footer}"></div>
+</footer>
+
+<script crossorigin="anonymous"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
